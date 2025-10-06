@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRACONID - Dragon-Powered Asteroid Defense Simulator</title>
+    <meta name="description" content="The ultimate asteroid defense simulator inspired by the Draconid meteor shower - where dragons meet space science">
+    
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.min.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐉</text></svg>">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Cosmic Background Effects -->
+    <div class="cosmic-background">
+        <div class="nebula-layer"></div>
+        <div class="star-field"></div>
+        <div class="shooting-stars"></div>
+        <div class="cosmic-dust"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="dragon-nav">
+        <div class="container">
+            <div class="nav-content">
+                <div class="dragon-brand">
+                    <div class="dragon-logo">
+                        <div class="dragon-head"></div>
+                        <div class="dragon-body"></div>
+                        <div class="dragon-wings">
+                            <div class="wing wing-left"></div>
+                            <div class="wing wing-right"></div>
+                        </div>
+                        <div class="dragon-tail"></div>
+                        <div class="dragon-breath"></div>
+                        <div class="dragon-particles">
+                            <div class="particle p1"></div>
+                            <div class="particle p2"></div>
+                            <div class="particle p3"></div>
+                            <div class="particle p4"></div>
+                            <div class="particle p5"></div>
+                            <div class="particle p6"></div>
+                        </div>
+                    </div>
+                    <div class="brand-text">
+                        <h1 class="brand-name">DRACONID</h1>
+                        <p class="brand-tagline">Dragon-Powered Defense Simulator</p>
+                    </div>
+                </div>
+                
+                <div class="nav-menu">
+                    <button class="nav-item active" data-section="home">🏠 Home</button>
+                    <button class="nav-item" data-section="simulator">💥 Impact Simulator</button>
+                    <button class="nav-item" data-section="tracker">🌌 3D Tracker</button>
+                    <button class="nav-item" data-section="defense">🛡️ Defense Academy</button>
+                    <button class="nav-item" data-section="education">📚 Knowledge Vault</button>
+                </div>
+                
+                <div class="nav-actions">
+                    <button class="btn btn--glass" id="theme-toggle">🌙</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section home-section active">
+            <div class="hero-container">
+                <div class="hero-dragon">
+                    <div class="dragon-logo-hero">
+                        <div class="dragon-head-hero"></div>
+                        <div class="dragon-body-hero"></div>
+                        <div class="dragon-wings-hero">
+                            <div class="wing-hero wing-left-hero"></div>
+                            <div class="wing-hero wing-right-hero"></div>
+                        </div>
+                        <div class="dragon-tail-hero"></div>
+                        <div class="dragon-breath-hero"></div>
+                        <div class="particle-trail">
+                            <div class="trail-particle tp1"></div>
+                            <div class="trail-particle tp2"></div>
+                            <div class="trail-particle tp3"></div>
+                            <div class="trail-particle tp4"></div>
+                            <div class="trail-particle tp5"></div>
+                            <div class="trail-particle tp6"></div>
+                            <div class="trail-particle tp7"></div>
+                            <div class="trail-particle tp8"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-content">
+                    <h1 class="hero-title">DRACONID</h1>
+                    <p class="hero-subtitle">Dragon-Powered Asteroid Defense Simulator</p>
+                    <p class="hero-description">Harness the power of the Draconid meteor shower constellation to protect Earth from cosmic threats. Experience the most advanced asteroid defense simulation ever created.</p>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-glass">
+                            <div class="stat-icon">🛰️</div>
+                            <div class="stat-value" id="tracked-objects">34,852</div>
+                            <div class="stat-label">Objects Tracked</div>
+                        </div>
+                        <div class="stat-glass">
+                            <div class="stat-icon">🐉</div>
+                            <div class="stat-value" id="dragon-power">100%</div>
+                            <div class="stat-label">Dragon Power</div>
+                        </div>
+                        <div class="stat-glass">
+                            <div class="stat-icon">🌟</div>
+                            <div class="stat-value" id="simulations-count">0</div>
+                            <div class="stat-label">Simulations Run</div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-actions">
+                        <button class="btn btn--dragon-primary" data-section="simulator">
+                            🚀 Launch Impact Simulator
+                        </button>
+                        <button class="btn btn--dragon-secondary" data-section="tracker">
+                            🌌 Explore 3D Space
+                        </button>
+                        <button class="btn btn--dragon-outline" data-section="education">
+                            📚 Begin Learning Journey
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="draconid-lore">
+                <div class="lore-card">
+                    <h3>🐲 The Draconid Legacy</h3>
+                    <p>Named after the mighty Draco constellation, the Draconid meteor shower has guided humanity's understanding of space for millennia. Now, channel the dragon's power to defend our world.</p>
+                </div>
+                <div class="lore-card">
+                    <h3>⭐ Constellation Connection</h3>
+                    <p>The Draco constellation contains Thuban, once Earth's pole star. These ancient dragons watch over us as celestial guardians against cosmic threats.</p>
+                </div>
+                <div class="lore-card">
+                    <h3>☄️ Meteor Storm History</h3>
+                    <p>In 1933 and 1946, Draconid meteor storms lit up the sky with thousands of meteors per hour - nature's own asteroid defense demonstration.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Simulator Section -->
+        <section id="simulator" class="section simulator-section">
+            <div class="simulator-container">
+                <div class="simulator-sidebar">
+                    <div class="sidebar-header">
+                        <h3>🎯 Impact Parameters</h3>
+                        <div class="dragon-accent"></div>
+                    </div>
+                    
+                    <div class="param-group">
+                        <h4>Asteroid Properties</h4>
+                        
+                        <div class="param-control">
+                            <label class="param-label">Diameter: <span id="diameter-value">100</span> meters</label>
+                            <div class="slider-container">
+                                <input type="range" id="diameter-slider" min="1" max="10000" value="100" class="dragon-slider">
+                                <div class="slider-track"></div>
+                                <div class="slider-thumb"></div>
+                            </div>
+                            <div class="param-info">
+                                <span>1m</span>
+                                <span class="size-comparison" id="size-comparison">Building-sized</span>
+                                <span>10km</span>
+                            </div>
+                        </div>
+                        
+                        <div class="param-control">
+                            <label class="param-label">Velocity: <span id="velocity-value">20</span> km/s</label>
+                            <div class="slider-container">
+                                <input type="range" id="velocity-slider" min="11.2" max="72" value="20" step="0.1" class="dragon-slider">
+                                <div class="velocity-trail"></div>
+                            </div>
+                            <div class="param-info">
+                                <span>11.2 km/s</span>
+                                <span class="velocity-desc" id="velocity-desc">Hypersonic</span>
+                                <span>72 km/s</span>
+                            </div>
+                        </div>
+                        
+                        <div class="param-control">
+                            <label class="param-label">Impact Angle: <span id="angle-value">45</span>°</label>
+                            <div class="angle-visualizer">
+                                <div class="trajectory-line" id="trajectory-line"></div>
+                                <input type="range" id="angle-slider" min="15" max="90" value="45" class="dragon-slider">
+                            </div>
+                        </div>
+                        
+                        <div class="param-control">
+                            <label class="param-label">Material Composition</label>
+                            <select id="material-select" class="dragon-select">
+                                <option value="stone">🪨 Stone (S-type) - 3000 kg/m³</option>
+                                <option value="iron">⚙️ Iron (M-type) - 8000 kg/m³</option>
+                                <option value="carbon">🪨 Carbon (C-type) - 2000 kg/m³</option>
+                                <option value="ice">🧊 Ice (Comet) - 1000 kg/m³</option>
+                            </select>
+                            <div class="material-preview" id="material-preview"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="param-group">
+                        <h4>Famous Asteroids</h4>
+                        <div class="preset-grid">
+                            <button class="preset-btn" data-preset="chelyabinsk">Chelyabinsk 2013</button>
+                            <button class="preset-btn" data-preset="tunguska">Tunguska 1908</button>
+                            <button class="preset-btn" data-preset="apophis">Apophis</button>
+                            <button class="preset-btn" data-preset="bennu">Bennu</button>
+                            <button class="preset-btn" data-preset="dimorphos">Dimorphos</button>
+                            <button class="preset-btn" data-preset="chicxulub">Chicxulub</button>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn--dragon-launch" id="launch-simulation">
+                        🐉 Dragon Launch!
+                    </button>
+                </div>
+                
+                <div class="simulator-main">
+                    <div class="target-selector">
+                        <h3>🌍 Target Selection</h3>
+                        <div class="world-map-3d">
+                            <div class="earth-sphere">
+                                <div class="continent-marker na" data-lat="39.8" data-lng="-98.6" data-name="North America"></div>
+                                <div class="continent-marker sa" data-lat="-8.8" data-lng="-55.5" data-name="South America"></div>
+                                <div class="continent-marker eu" data-lat="54.5" data-lng="15.3" data-name="Europe"></div>
+                                <div class="continent-marker af" data-lat="0.8" data-lng="14.5" data-name="Africa"></div>
+                                <div class="continent-marker as" data-lat="29.8" data-lng="89.3" data-name="Asia"></div>
+                                <div class="continent-marker au" data-lat="-25.3" data-lng="133.8" data-name="Australia"></div>
+                                <div class="impact-crosshair" id="impact-crosshair"></div>
+                            </div>
+                        </div>
+                        <div class="target-info">
+                            <strong>Selected Target:</strong> <span id="target-name">Click on Earth to select</span>
+                        </div>
+                    </div>
+                    
+                    <div class="live-calculations">
+                        <h3>⚡ Real-time Analysis</h3>
+                        <div class="calc-grid">
+                            <div class="calc-card">
+                                <div class="calc-icon">💥</div>
+                                <div class="calc-value" id="impact-energy">0 MT</div>
+                                <div class="calc-label">Impact Energy</div>
+                                <div class="calc-comparison" id="energy-comparison"></div>
+                            </div>
+                            <div class="calc-card">
+                                <div class="calc-icon">🕳️</div>
+                                <div class="calc-value" id="crater-size">0 km</div>
+                                <div class="calc-label">Crater Diameter</div>
+                                <div class="calc-comparison" id="crater-comparison"></div>
+                            </div>
+                            <div class="calc-card">
+                                <div class="calc-icon">🔥</div>
+                                <div class="calc-value" id="fireball-radius">0 km</div>
+                                <div class="calc-label">Fireball Radius</div>
+                                <div class="calc-comparison" id="fireball-comparison"></div>
+                            </div>
+                            <div class="calc-card">
+                                <div class="calc-icon">🌊</div>
+                                <div class="calc-value" id="seismic-mag">0.0</div>
+                                <div class="calc-label">Seismic Magnitude</div>
+                                <div class="calc-comparison" id="seismic-comparison"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3D Tracker Section -->
+        <section id="tracker" class="section tracker-section">
+            <div class="tracker-container">
+                <div class="tracker-header">
+                    <h2>🌌 3D Asteroid Tracker</h2>
+                    <p>Real-time solar system visualization with live NASA data</p>
+                    <div class="tracker-controls">
+                        <button class="btn btn--glass" id="play-pause">⏸️ Pause</button>
+                        <button class="btn btn--glass" id="speed-toggle">🚀 1x Speed</button>
+                        <button class="btn btn--glass" id="reset-view">🔄 Reset View</button>
+                    </div>
+                </div>
+                
+                <div class="tracker-main">
+                    <div class="solar-system-3d">
+                        <canvas id="solar-system-canvas" width="800" height="600"></canvas>
+                        <div class="loading-overlay" id="3d-loading">
+                            <div class="dragon-spinner"></div>
+                            <p>Initializing 3D Solar System...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="asteroid-panel">
+                        <h3>📡 Live Asteroid Data</h3>
+                        <div class="asteroid-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Total NEOs:</span>
+                                <span class="stat-value" id="total-neos">34,852</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Potentially Hazardous:</span>
+                                <span class="stat-value hazardous" id="hazardous-count">2,347</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Close Approaches Today:</span>
+                                <span class="stat-value" id="today-approaches">5</span>
+                            </div>
+                        </div>
+                        
+                        <div class="asteroid-list" id="asteroid-list">
+                            <div class="loading-asteroids">Loading live data...</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="selected-asteroid-info" id="selected-info" style="display: none;">
+                    <h4 id="selected-name">Asteroid Name</h4>
+                    <div class="asteroid-details">
+                        <div class="detail-row">
+                            <span>Diameter:</span>
+                            <span id="selected-diameter">Unknown</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Distance:</span>
+                            <span id="selected-distance">Unknown</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Velocity:</span>
+                            <span id="selected-velocity">Unknown</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Next Close Approach:</span>
+                            <span id="selected-approach">Unknown</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Defense Academy Section -->
+        <section id="defense" class="section defense-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>🛡️ Dragon Defense Academy</h2>
+                    <p>Master infinite scenarios with the wisdom of ancient dragons</p>
+                </div>
+                
+                <div class="scenario-generator">
+                    <h3>🎲 Infinite Scenario Generator</h3>
+                    <div class="generator-controls">
+                        <button class="btn btn--dragon-primary" id="generate-scenario">Generate New Scenario</button>
+                        <div class="difficulty-selector">
+                            <label>Difficulty:</label>
+                            <select id="difficulty-level" class="dragon-select">
+                                <option value="easy">🐲 Dragon Hatchling</option>
+                                <option value="medium">🐉 Adult Dragon</option>
+                                <option value="hard">🔥 Ancient Dragon</option>
+                                <option value="nightmare">💀 Nightmare Dragon</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="current-scenario" id="current-scenario">
+                        <div class="scenario-loading">Click "Generate New Scenario" to begin your dragon training</div>
+                    </div>
+                </div>
+                
+                <div class="strategy-selection">
+                    <h3>⚔️ Choose Your Dragon Strategy</h3>
+                    <div class="strategy-grid">
+                        <div class="strategy-card dragon-kinetic" data-strategy="kinetic">
+                            <div class="strategy-icon">🚀</div>
+                            <h4>Dragon's Claw Strike</h4>
+                            <div class="success-rate">85% Success Rate</div>
+                            <p>Channel kinetic energy like a dragon's claw impact</p>
+                            <div class="strategy-stats">
+                                <div>⏱️ Lead Time: 6+ months</div>
+                                <div>💰 Cost: ~$300M</div>
+                                <div>🎯 Best for: Medium asteroids</div>
+                            </div>
+                            <button class="btn btn--strategy-select">Choose Strategy</button>
+                        </div>
+                        
+                        <div class="strategy-card dragon-gravity" data-strategy="gravity">
+                            <div class="strategy-icon">🌌</div>
+                            <h4>Dragon's Gravitational Pull</h4>
+                            <div class="success-rate">70% Success Rate</div>
+                            <p>Use gentle dragon magic to guide asteroids away</p>
+                            <div class="strategy-stats">
+                                <div>⏱️ Lead Time: 5+ years</div>
+                                <div>💰 Cost: ~$500M</div>
+                                <div>🎯 Best for: Precise deflection</div>
+                            </div>
+                            <button class="btn btn--strategy-select">Choose Strategy</button>
+                        </div>
+                        
+                        <div class="strategy-card dragon-breath" data-strategy="nuclear">
+                            <div class="strategy-icon">🔥</div>
+                            <h4>Dragon's Breath</h4>
+                            <div class="success-rate">90% Success Rate</div>
+                            <p>Unleash devastating dragon fire upon threats</p>
+                            <div class="strategy-stats">
+                                <div>⏱️ Lead Time: 6+ months</div>
+                                <div>💰 Cost: $1B+</div>
+                                <div>🎯 Best for: Large threats</div>
+                            </div>
+                            <button class="btn btn--strategy-select">Choose Strategy</button>
+                        </div>
+                        
+                        <div class="strategy-card dragon-shield" data-strategy="evacuation">
+                            <div class="strategy-icon">🛡️</div>
+                            <h4>Dragon's Protective Shield</h4>
+                            <div class="success-rate">60% Success Rate</div>
+                            <p>Protect populations under dragon wings</p>
+                            <div class="strategy-stats">
+                                <div>⏱️ Lead Time: Weeks</div>
+                                <div>💰 Impact: $10B+</div>
+                                <div>🎯 Best for: Last resort</div>
+                            </div>
+                            <button class="btn btn--strategy-select">Choose Strategy</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mission-execution">
+                    <div class="mission-status" id="mission-status">
+                        <h4>Mission Status: <span id="status-text">Awaiting Strategy Selection</span></h4>
+                        <div class="progress-ring">
+                            <div class="ring-progress" id="mission-progress"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn--dragon-execute" id="execute-mission" disabled>
+                        🐉 Execute Dragon Mission
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="section education-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>📚 Dragon Knowledge Vault</h2>
+                    <p>Infinite wisdom of the cosmos, powered by dragon intelligence</p>
+                </div>
+                
+                <div class="knowledge-progress">
+                    <div class="progress-dragon">
+                        <div class="dragon-level" id="dragon-level">Hatchling</div>
+                        <div class="knowledge-xp">
+                            <div class="xp-bar">
+                                <div class="xp-fill" id="xp-fill" style="width: 0%"></div>
+                            </div>
+                            <span id="xp-text">0 / 1000 XP</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="knowledge-modules">
+                    <div class="module-card detection-module" data-module="detection">
+                        <div class="module-icon">🔭</div>
+                        <div class="module-content">
+                            <h3>Dragon Eyes: Detection & Tracking</h3>
+                            <p>Master the art of spotting cosmic threats with dragon-enhanced vision</p>
+                            <div class="lesson-count">12 Deep Lessons + Interactive Labs</div>
+                            <div class="module-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                                <span>0/12 completed</span>
+                            </div>
+                        </div>
+                        <button class="btn btn--module-start">Begin Dragon Training</button>
+                    </div>
+                    
+                    <div class="module-card physics-module" data-module="physics">
+                        <div class="module-icon">💥</div>
+                        <div class="module-content">
+                            <h3>Dragon Force: Impact Physics</h3>
+                            <p>Understand the devastating power of cosmic collisions</p>
+                            <div class="lesson-count">18 Comprehensive Lessons + Simulations</div>
+                            <div class="module-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                                <span>0/18 completed</span>
+                            </div>
+                        </div>
+                        <button class="btn btn--module-start">Begin Dragon Training</button>
+                    </div>
+                    
+                    <div class="module-card defense-module" data-module="defense">
+                        <div class="module-icon">🛡️</div>
+                        <div class="module-content">
+                            <h3>Dragon Guard: Planetary Defense</h3>
+                            <p>Learn ancient and modern techniques to protect Earth</p>
+                            <div class="lesson-count">15 Strategic Lessons + Case Studies</div>
+                            <div class="module-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                                <span>0/15 completed</span>
+                            </div>
+                        </div>
+                        <button class="btn btn--module-start">Begin Dragon Training</button>
+                    </div>
+                    
+                    <div class="module-card draconid-module" data-module="draconid">
+                        <div class="module-icon">🐲</div>
+                        <div class="module-content">
+                            <h3>Dragon Lore: Draconid Mysteries</h3>
+                            <p>Explore the secrets of the Draconid meteor shower and Draco constellation</p>
+                            <div class="lesson-count">10 Mystical Lessons + Sky Maps</div>
+                            <div class="module-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                                <span>0/10 completed</span>
+                            </div>
+                        </div>
+                        <button class="btn btn--module-start">Begin Dragon Training</button>
+                    </div>
+                </div>
+                
+                <div class="daily-content">
+                    <h3>🌟 Daily Dragon Wisdom</h3>
+                    <div class="wisdom-card" id="daily-wisdom">
+                        <div class="wisdom-loading">Loading today's cosmic wisdom...</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Impact Results Modal -->
+    <div id="impact-modal" class="modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content dragon-modal">
+            <div class="modal-header">
+                <h3>🐉 Dragon Impact Analysis</h3>
+                <button class="modal-close" id="close-impact-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="impact-visualization" id="impact-viz">
+                    <canvas id="impact-canvas" width="400" height="200"></canvas>
+                </div>
+                
+                <div class="results-tabs">
+                    <button class="tab-btn active" data-tab="overview">📊 Overview</button>
+                    <button class="tab-btn" data-tab="damage">💥 Damage Zones</button>
+                    <button class="tab-btn" data-tab="science">🔬 Science</button>
+                    <button class="tab-btn" data-tab="comparison">📈 Comparison</button>
+                </div>
+                
+                <div class="tab-content active" id="overview-content">
+                    <div class="results-grid">
+                        <div class="result-card">
+                            <div class="result-icon">⚡</div>
+                            <div class="result-value" id="result-energy">0 MT</div>
+                            <div class="result-label">Impact Energy</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-icon">🕳️</div>
+                            <div class="result-value" id="result-crater">0 km</div>
+                            <div class="result-label">Crater Diameter</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-icon">🔥</div>
+                            <div class="result-value" id="result-fireball">0 km</div>
+                            <div class="result-label">Fireball Radius</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-icon">👥</div>
+                            <div class="result-value" id="result-casualties">0</div>
+                            <div class="result-label">Est. Casualties</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="damage-content">
+                    <div class="damage-visualization">
+                        <h4>Damage Zone Analysis</h4>
+                        <div id="damage-zones-chart" style="height: 300px; position: relative;"></div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="science-content">
+                    <div class="science-breakdown" id="science-breakdown">
+                        <h4>Physics Breakdown</h4>
+                        <div class="formula-display">
+                            <div class="formula">E = ½mv²</div>
+                            <div class="formula-explanation" id="energy-calculation"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="comparison-content">
+                    <div class="historical-chart">
+                        <h4>Historical Impact Comparison</h4>
+                        <canvas id="comparison-chart" style="height: 300px;"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--outline" id="download-report">📊 Download Report</button>
+                <button class="btn btn--dragon-primary" id="run-another">🔄 Another Simulation</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Education Module Modal -->
+    <div id="education-modal" class="modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content dragon-modal">
+            <div class="modal-header">
+                <h3 id="module-title">Dragon Training Module</h3>
+                <button class="modal-close" id="close-education-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="lesson-content" id="lesson-content">
+                    <!-- Lesson content goes here -->
+                </div>
+                <div class="lesson-nav">
+                    <button class="btn btn--outline" id="prev-lesson" disabled>← Previous</button>
+                    <span class="lesson-indicator" id="lesson-indicator">Lesson 1 of 10</span>
+                    <button class="btn btn--dragon-primary" id="next-lesson">Next →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dragon Notifications -->
+    <div id="dragon-notifications" class="dragon-notifications"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
